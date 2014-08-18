@@ -1,0 +1,24 @@
+{
+  "name": "angular-evening",
+  "version": "0.0.1-dev",
+  "authors": [
+    {
+      "name"    : "Mikael Berg",
+      "email"   : "miberg@silabs.com"
+    }
+  ],
+  "main": ["dist/angular-evening.js"],
+  "ignore": [
+    "src",
+    "test",
+    "Gruntfile.js",
+    "**/.*"
+  ],
+  "dependencies": {
+    "angular": ">=1.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.21",
+    "angular-scenario": "~1.2.21"
+  }
+}
