@@ -16,11 +16,11 @@ describe('', function() {
     dependencies = module.requires;
   });
 
-  it('should load resource module', function() {
-    expect(hasModule('evening.resource')).toBeTruthy();
+  it('should load model module', function() {
+    expect(hasModule('evening.evemodel')).toBeTruthy();
   });
 
   it('should load collection module', function() {
-    expect(hasModule('evening.collection')).toBeTruthy();
+    expect(hasModule('evening.evecollection')).toBeTruthy();
   });
 });

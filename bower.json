@@ -15,7 +15,8 @@
     "**/.*"
   ],
   "dependencies": {
-    "angular": ">=1.2"
+    "angular": ">=1.2",
+    "angular-thickm": "ssh://git@stash.silabs.com/simlabs/angular-thickm.git#develop"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.21",

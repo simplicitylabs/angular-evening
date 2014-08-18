@@ -1,3 +1,6 @@
 'use strict';
 
-angular.module('evening', []);
+angular.module('evening', [
+  'evening.evemodel',
+  'evening.evecollection'
+]);

@@ -18,12 +18,13 @@ module.exports = function(config) {
     files: [
       'bower/angular/angular.js',
       'bower/angular-mocks/angular-mocks.js',
+      'bower/angular-thickm/dist/angular-thickm.js',
 
       'src/**/*.module.js',
       'src/**/*.provider.js',
       'src/**/*.factory.js',
 
-      'test/unit/**/*.js'
+      'test/unit/**/*.spec.js'
     ],
 
 

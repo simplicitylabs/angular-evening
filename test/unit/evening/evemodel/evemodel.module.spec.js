@@ -11,17 +11,17 @@ describe('', function() {
   };
 
   beforeEach(function() {
-
     // Get module
-    module = angular.module('evening');
+    module = angular.module('evening.evemodel');
     dependencies = module.requires;
   });
 
-  it('should load resource module', function() {
-    expect(hasModule('evening.resource')).toBeTruthy();
+  it('should load thickm', function() {
+    expect(hasModule('thickm')).toBeTruthy();
   });
 
-  it('should load collection module', function() {
-    expect(hasModule('evening.collection')).toBeTruthy();
+  it('should load evening.evecollection', function() {
+    expect(hasModule('evening.evecollection')).toBeTruthy();
   });
+
 });
