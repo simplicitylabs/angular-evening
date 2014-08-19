@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('evening.evecollection')
-.factory('EveCollection', function(ResourceCollection, ThickmUtil, $q) {
+.factory('EveCollection', function(ResourceCollection, $q) {
   function EveCollection() {}
 
-  ThickmUtil.extend(EveCollection, ResourceCollection);
-  angular.extend(EveCollection, ResourceCollection);
+  ResourceCollection.extend(EveCollection);
 
   EveCollection._itemsField = '_items';
   EveCollection._metaField = '_meta';

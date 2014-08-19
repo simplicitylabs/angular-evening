@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evening.evemodel')
-.factory('EveModel', function(EveCollection, ThickmUtil, Resource) {
+.factory('EveModel', function(EveCollection, Resource) {
 
   function EveModel(data) {
     this._primaryField = '_id';
@@ -14,8 +14,7 @@ angular.module('evening.evemodel')
         new Date(this._updated) : this._updated;
   }
 
-  ThickmUtil.extend(EveModel, Resource);
-  angular.extend(EveModel, Resource);
+  Resource.extend(EveModel);
 
   EveModel._collectionClass = EveCollection;
 

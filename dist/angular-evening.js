@@ -16,11 +16,10 @@ angular.module('evening', [
 ]);
 // Source: src/evening/evecollection/evecollection.factory.js
 angular.module('evening.evecollection')
-.factory('EveCollection', function(ResourceCollection, ThickmUtil, $q) {
+.factory('EveCollection', function(ResourceCollection, $q) {
   function EveCollection() {}
 
-  ThickmUtil.extend(EveCollection, ResourceCollection);
-  angular.extend(EveCollection, ResourceCollection);
+  ResourceCollection.extend(EveCollection);
 
   EveCollection._itemsField = '_items';
   EveCollection._metaField = '_meta';
@@ -89,7 +88,7 @@ angular.module('evening.evecollection')
 });
 // Source: src/evening/evemodel/evemodel.factory.js
 angular.module('evening.evemodel')
-.factory('EveModel', function(EveCollection, ThickmUtil, Resource) {
+.factory('EveModel', function(EveCollection, Resource) {
 
   function EveModel(data) {
     this._primaryField = '_id';
@@ -102,8 +101,7 @@ angular.module('evening.evemodel')
         new Date(this._updated) : this._updated;
   }
 
-  ThickmUtil.extend(EveModel, Resource);
-  angular.extend(EveModel, Resource);
+  Resource.extend(EveModel);
 
   EveModel._collectionClass = EveCollection;
 

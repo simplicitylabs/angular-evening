@@ -21,7 +21,6 @@ module.exports = function(config) {
       'bower/angular-thickm/dist/angular-thickm.js',
 
       'src/**/*.module.js',
-      'src/**/*.provider.js',
       'src/**/*.factory.js',
 
       'test/unit/**/*.spec.js'
