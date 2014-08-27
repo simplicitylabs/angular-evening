@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('evening.evemodel')
-.factory('EveModel', function(EveCollection, Resource) {
+.factory('EveModel', function(EveCollection, ThickModel) {
 
   function EveModel(data) {
     this._primaryField = '_id';
@@ -14,7 +14,7 @@ angular.module('evening.evemodel')
         new Date(this._updated) : this._updated;
   }
 
-  Resource.extend(EveModel);
+  ThickModel.extend(EveModel);
 
   EveModel._collectionClass = EveCollection;
 
@@ -29,7 +29,7 @@ angular.module('evening.evemodel')
     return clean;
   };
 
-  // Overrides Resource's transformItemRequest
+  // Overrides ThickModel's transformItemRequest
   EveModel.prototype.transformItemRequest = function(headers) {
     if (this._etag) {
       headers['If-Match'] = this._etag;
@@ -76,7 +76,7 @@ angular.module('evening.evemodel')
       }
     }
 
-    return Resource.query.call(this, params);
+    return ThickModel.query.call(this, params);
   };
 
   return EveModel;

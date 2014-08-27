@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('evening.evecollection')
-.factory('EveCollection', function(ResourceCollection, $q) {
+.factory('EveCollection', function(ThickModelCollection, $q) {
   function EveCollection() {}
 
-  ResourceCollection.extend(EveCollection);
+  ThickModelCollection.extend(EveCollection);
 
   EveCollection._itemsField = '_items';
   EveCollection._metaField = '_meta';
@@ -31,7 +31,7 @@ angular.module('evening.evecollection')
 
   // Pull in the '_links' field
   EveCollection.build = function(cls, response) {
-    var rc = ResourceCollection.build.call(this, cls, response);
+    var rc = ThickModelCollection.build.call(this, cls, response);
     rc._links = response.data._links;
     return rc;
   };
