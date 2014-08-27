@@ -16,10 +16,10 @@ angular.module('evening', [
 ]);
 // Source: src/evening/evecollection/evecollection.factory.js
 angular.module('evening.evecollection')
-.factory('EveCollection', function(ResourceCollection, $q) {
+.factory('EveCollection', function(ThickModelCollection, $q) {
   function EveCollection() {}
 
-  ResourceCollection.extend(EveCollection);
+  ThickModelCollection.extend(EveCollection);
 
   EveCollection._itemsField = '_items';
   EveCollection._metaField = '_meta';
@@ -46,7 +46,7 @@ angular.module('evening.evecollection')
 
   // Pull in the '_links' field
   EveCollection.build = function(cls, response) {
-    var rc = ResourceCollection.build.call(this, cls, response);
+    var rc = ThickModelCollection.build.call(this, cls, response);
     rc._links = response.data._links;
     return rc;
   };
@@ -88,7 +88,7 @@ angular.module('evening.evecollection')
 });
 // Source: src/evening/evemodel/evemodel.factory.js
 angular.module('evening.evemodel')
-.factory('EveModel', function(EveCollection, Resource) {
+.factory('EveModel', function(EveCollection, ThickModel) {
 
   function EveModel(data) {
     this._primaryField = '_id';
@@ -101,7 +101,7 @@ angular.module('evening.evemodel')
         new Date(this._updated) : this._updated;
   }
 
-  Resource.extend(EveModel);
+  ThickModel.extend(EveModel);
 
   EveModel._collectionClass = EveCollection;
 
@@ -116,7 +116,7 @@ angular.module('evening.evemodel')
     return clean;
   };
 
-  // Overrides Resource's transformItemRequest
+  // Overrides ThickModel's transformItemRequest
   EveModel.prototype.transformItemRequest = function(headers) {
     if (this._etag) {
       headers['If-Match'] = this._etag;
@@ -163,7 +163,7 @@ angular.module('evening.evemodel')
       }
     }
 
-    return Resource.query.call(this, params);
+    return ThickModel.query.call(this, params);
   };
 
   return EveModel;
