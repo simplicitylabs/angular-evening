@@ -15,6 +15,11 @@ See also [angular-thickm](http://github.com/simplicitylabs/angular-thickm/).
  - Proper formatting of nested objects as parameters
  - Free text search function using the Eve/MongoDB `$text` operator
 
+## Adding to my project
+
+ - Using bower: `bower install angular-evening --save`.
+ - Manually using either raw or minified versions in the `dist` folder.
+
 ## Contributing
 
 Install
