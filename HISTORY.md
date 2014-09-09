@@ -1,3 +1,7 @@
+0.1.2 / 2014-09-09:
+-------------------
+- Forgot to generate distributables on last release
+
 0.1.1 / 2014-09-09:
 -------------------
 - Added `all()` method
