@@ -126,7 +126,7 @@ angular.module('evening.evemodel')
 
   /**
    * @ngdoc method
-   * @name boardbaseApp.evening.EveModel.search
+   * @name evening.EveModel.search
    * @description
    * Free-text search for resources using the MongoDB `$text` operator.
    *
@@ -164,6 +164,20 @@ angular.module('evening.evemodel')
     }
 
     return ThickModel.query.call(this, params);
+  };
+
+  /**
+   * @ngdoc method
+   * @name evening.EveModel.all
+   * @description
+   * Does a query for 1000 instances
+   *
+   * @param {object} params Additional parameters
+   */
+  EveModel.all = function(params) {
+    params = params || {};
+    angular.extend(params, {max_results: 1000});
+    return this.query(params);
   };
 
   return EveModel;
