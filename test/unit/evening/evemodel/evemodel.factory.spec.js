@@ -65,4 +65,12 @@ describe('EveModel', function() {
   describe('query', function() {
     // Not yet tested
   });
+
+  describe('all', function() {
+    it('calls query with max_results = 1000', function() {
+      spyOn(EveModel, 'query');
+      EveModel.all();
+      expect(EveModel.query).toHaveBeenCalledWith({max_results: 1000});
+    });
+  });
 });
