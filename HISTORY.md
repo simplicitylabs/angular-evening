@@ -1,3 +1,7 @@
+0.2.0 / 2014-09-22:
+-------------------
+- Updated ThickM to 0.3.0.
+
 0.1.2 / 2014-09-09:
 -------------------
 - Forgot to generate distributables on last release
