@@ -1,3 +1,8 @@
+0.2.1 / 2014-10-06:
+-------------------
+ - Updated dependency angular-thickm version spec to ~0.3 to accommodate patch
+ updates.
+
 0.2.0 / 2014-09-22:
 -------------------
 - Updated ThickM to 0.3.0.
