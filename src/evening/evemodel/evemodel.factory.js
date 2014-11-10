@@ -5,36 +5,48 @@ angular.module('evening.evemodel')
 
   function EveModel(data) {
     this._primaryField = '_id';
-    angular.extend(this, data);
 
     // Transform dates
-    this._created = typeof(this._created) === 'string' ?
-        new Date(this._created) : this._created;
-    this._updated = typeof(this._updated) === 'string' ?
-        new Date(this._updated) : this._updated;
+    if (angular.isObject(data)) {
+      data._created = typeof(data._created) === 'string' ?
+          new Date(data._created) : data._created;
+      data._updated = typeof(data._updated) === 'string' ?
+          new Date(data._updated) : data._updated;
+    }
+
+    ThickModel.call(this, data);
   }
 
   ThickModel.extend(EveModel);
 
   EveModel._collectionClass = EveCollection;
 
-  // Only fields which do not start with '_', create strings of dates
-  EveModel.prototype.fieldsToApi = function() {
-    var clean = {};
-    angular.forEach(this, function(value, key) {
-      if (!(typeof key === 'string' && key.charAt(0) === '_')) {
-        clean[key] = value;
-      }
-    });
-    return clean;
-  };
-
-  // Overrides ThickModel's transformItemRequest
+  /**
+   * @ngdoc method
+   * @name evening.EveModel.transformItemRequest
+   * @description
+   * Add `etag` to the headers if present, then use the parent's corresponding
+   * function to get the fields to send to the API. After that, subtract the
+   * fields which start with '_', which are considered to be hidden.
+   *
+   * @param {Object} headers Headers object
+   * @returns {Object} Object which is sent to API.
+   */
   EveModel.prototype.transformItemRequest = function(headers) {
     if (this._etag) {
       headers['If-Match'] = this._etag;
     }
-    return this.fieldsToApi();
+
+    var trans = ThickModel.prototype.transformItemRequest.call(this, headers);
+
+    var clean = {};
+    angular.forEach(trans, function(value, key) {
+      if(!(typeof key === 'string' && key.charAt(0) === '_')) {
+        clean[key] = value;
+      }
+    });
+
+    return clean;
   };
 
   /**

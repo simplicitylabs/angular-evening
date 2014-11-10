@@ -1,6 +1,6 @@
 {
   "name": "angular-evening",
-  "version": "0.2.1",
+  "version": "0.3.0-beta",
   "author": {
     "name": "Mikael Berg",
     "email": "miberg@silabs.com"
@@ -32,6 +32,7 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start karma-unit.conf.js --single-run"
+    "test": "./node_modules/karma/bin/karma start karma-unit.conf.js --single-run",
+    "conttest": "./node_modules/karma/bin/karma start karma-unit.conf.js"
   }
 }
