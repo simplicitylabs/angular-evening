@@ -19,6 +19,14 @@ describe('EveModel', function() {
   }));
 
   describe('constructor', function() {
+    it('is EveModel constructor', function() {
+      expect((new EveModel()) instanceof EveModel).toBe(true);
+    });
+
+    it('is instance of ThickModel', inject(function(ThickModel) {
+      expect((new EveModel()) instanceof ThickModel).toBe(true);
+    }));
+
     it('transforms created and updated to Date objects', function() {
       var instance = new EveModel(response);
       expect(instance._created instanceof Date).toEqual(true);
@@ -36,16 +44,17 @@ describe('EveModel', function() {
     });
   });
 
-  describe('fieldsToApi', function() {
-    it('cleans away all keys starting with _', function() {
-      var instance = new EveModel(response);
-      expect(Object.keys(instance.fieldsToApi())).toEqual(['description']);
-    });
-  });
-
   describe('transformItemRequest', function() {
     it('sends only fields not starting with _', function(){
+      var instance = new EveModel({_hidden: 1, visible: 1});
+      expect(instance.isNew()).toBe(true);
+      expect(Object.keys(instance.transformItemRequest({})))
+          .toEqual(['visible']);
+    });
+
+    it('sends all fields when isNew()', function() {
       var instance = new EveModel(response);
+      delete instance._id;
       expect(Object.keys(instance.transformItemRequest({})))
           .toEqual(['description']);
     });
@@ -55,6 +64,12 @@ describe('EveModel', function() {
       var instance = new EveModel(response);
       instance.transformItemRequest(headers);
       expect(headers['If-Match']).toEqual(response._etag);
+    });
+
+    it('sends only changed fields when !isNew()', function() {
+      var instance = new EveModel({_id: 'a', a: 1, b: 2});
+      instance.a = 42;
+      expect(instance.transformItemRequest()).toEqual({ a: 42 });
     });
   });
 
