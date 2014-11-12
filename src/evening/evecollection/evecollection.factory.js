@@ -56,7 +56,7 @@ angular.module('evening.evecollection')
     }
 
     var params = qs(this._links.next.href);
-    this._resourceClass.query(params).then(function(collection) {
+    this._modelClass.query(params).then(function(collection) {
       angular.forEach(collection, function(resource) {
         _self.push(resource);
       });
