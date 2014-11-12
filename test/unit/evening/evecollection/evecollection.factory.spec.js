@@ -16,7 +16,7 @@ describe('EveCollection', function() {
 
     response = {
       data: {
-        _links: { next: true },
+        _links: { next: {href: '/mock?page=2'} },
         _meta: { meta: true },
         _items: []
       }
@@ -73,7 +73,12 @@ describe('EveCollection', function() {
   });
 
   describe('loadMore', function() {
-    // Currently untested!
+    it('runs a query', function() {
+      var instance = EveCollection.build(MockModel, response);
+      spyOn(MockModel, 'query').andCallThrough();
+      instance.loadMore();
+      expect(MockModel.query).toHaveBeenCalled();
+    });
   });
 
 });
